@@ -1,0 +1,7 @@
+{
+    "pullRefresh": true,
+    "usingComponents": {
+        "component-icon-nav": "/components/icon-nav/icon-nav",
+        "component-slider": "/components/slider/slider"
+    }
+}

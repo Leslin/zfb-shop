@@ -1,0 +1,121 @@
+/**
+ * 列表
+ */
+.content ul.am-gallery-bordered {
+    padding: 0px;
+    width: calc(100% + 10px);
+    margin-left: -5px;
+}
+.content ul.am-gallery-bordered .icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px 0px rgba(0,0,0,.4);
+}
+.content ul.am-gallery-bordered.am-gallery-bordered .am-gallery-item {
+    box-shadow: none;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+}
+.content ul.am-gallery-bordered.am-gallery-bordered .am-gallery-item.am-active {
+    border: 1px solid #fde2e2;
+    background: #fffbfb;
+}
+.content ul.am-gallery-bordered.am-gallery-bordered .am-gallery-item:hover {
+    border: 1px solid #999;
+    box-shadow: 0px 12px 12px -10px rgba(0,0,0,.4);
+}
+.content ul.am-gallery-bordered li {
+    position: relative;
+}
+.content ul.am-gallery-bordered li .base {
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    width: calc(100% - 112px);
+}
+.content ul.am-gallery-bordered li .base h3 {
+    font-weight: 700;
+    color: #333;
+    margin: 2px 0px 3px 0px;
+}
+.content ul.am-gallery-bordered li .base p {
+    line-height: 18px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 300;
+    color: #999;
+}
+.content ul.am-gallery-bordered li .base h3, .content ul.am-gallery-bordered li .base p {
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.content ul.am-gallery-bordered.am-gallery-bordered .am-gallery-desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-top: 10px;
+    min-height: 36px;
+    line-height: 16px;
+    font-weight: 300;
+    color: #b3b3b3;
+}
+.content ul.am-gallery-bordered li .operation {
+    border-top: 1px dashed #eee;
+    padding: 10px 0 5px 0;
+}
+.content ul.am-gallery-bordered li .am-btn, .content ul.am-gallery-bordered li .am-icon-btn {
+    width: 35px;
+}
+.content ul.am-gallery-bordered li .submit-state {
+    height: 28px;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 28px;
+}
+.content ul.am-gallery-bordered li .submit-state.am-default {
+    background-color: #e6e6e6;
+}
+@media only screen and (max-width: 641px) {
+    .content ul.am-gallery-bordered .icon {
+        width: 65px;
+        height: 65px;
+    }
+    .content ul.am-gallery-bordered li .base {
+        left: 85px;
+        width: calc(100% - 97px);
+    }
+    .content ul.am-gallery-bordered li .base h3 {
+        margin: 0px;
+    }
+    .content ul.am-gallery-bordered li .base p {
+        line-height: 16px;
+    }
+}
+
+
+/**
+ * 安装
+ */
+input[name="file"] { width: 105px !important; height: 32px; }
+input.file-event { margin-top: 0 !important; }
+
+/**
+ * 删除modal
+ */
+@media only screen and (min-width: 641px) {
+    #plugins-delete-modal .am-modal-bd button.submit-ajax {
+        margin-right: 10px;
+    }
+}
+@media only screen and (max-width: 641px) {
+    #plugins-delete-modal .am-modal-bd .am-btn {
+        width: 100%;
+        display: block;
+        margin-top: 10px;
+    }
+}

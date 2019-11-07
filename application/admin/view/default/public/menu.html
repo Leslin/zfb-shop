@@ -1,0 +1,50 @@
+<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+	<div class="am-offcanvas-bar admin-offcanvas-bar">
+		<ul class="am-list admin-sidebar-list common-left-menu">
+			<li>
+				<a href="javascript:;" data-type="menu" data-url="{{:MyUrl('admin/index/init')}}" class="common-left-menu-active">
+					<span class="iconfont icon-shouye"></span>
+					<span class="nav-name">首页</span>
+				</a>
+			</li>
+			{{foreach $left_menu as $v}}
+				{{if empty($v['items'])}}
+					<li>
+						<a href="javascript:;" data-type="menu" data-url="{{:MyUrl('admin/'.strtolower($v['control']).'/'.strtolower($v['action']))}}">
+							{{if !empty($v['icon'])}}<span class="iconfont {{$v.icon}}"></span>{{/if}}
+							<span class="nav-name">{{$v.name}}</span>
+						</a>
+					</li>
+				{{else /}}
+					<li class="admin-parent">
+						<a data-type="menu" class="am-cf menu-parent-items-{{$v.id}}" data-am-collapse="{target: '#power-menu-{{$v.id}}'}">
+							{{if !empty($v['icon'])}}<span class="iconfont {{$v.icon}}"></span>{{/if}}
+							<span class="nav-name">{{$v.name}}</span>
+							<i class="am-icon-angle-down am-fr am-margin-right left-menu-more-ico-rotate"></i>
+						</a>
+						<ul class="am-list am-collapse admin-sidebar-sub" id="power-menu-{{$v.id}}">
+							{{foreach $v.items as $vs}}
+								<li>
+									<a href="javascript:;" class="menu-items-{{$vs.id}}" data-parent-id="{{$v.id}}" data-type="menu" data-url="{{:MyUrl('admin/'.strtolower($vs['control']).'/'.strtolower($vs['action']))}}">
+										{{if !empty($vs['icon'])}}<span class="{{$vs.icon}}"></span>{{/if}}
+										<span class="nav-name">{{$vs.name}}</span>
+									</a>
+								</li>
+							{{/foreach}}
+						</ul>
+					</li>
+				{{/if}}
+			{{/foreach}}
+		</ul>
+	</div>
+</div>
+
+<button class="am-btn am-btn-primary am-radius am-btn-xs menu-scaling-submit am-hide-sm-only am-icon-angle-double-left" data-status="0"></button>
+<div class="menu-mini-container-tips am-animation-slide-right">
+	<div class="mui-mbar-tab-tip">◆</div>
+	<span></span>
+</div>
+<div class="menu-mini-container-popup am-animation-slide-right">
+	<div class="mui-mbar-tab-tip">◆</div>
+	<ul></ul>
+</div>

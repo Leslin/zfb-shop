@@ -1,0 +1,23 @@
+<view class='left-nav'>
+  <block wx:for="{{data_list}}" wx:key="key">
+    <view class='items {{item.active || ""}}' data-index="{{index}}" bindtap='nav_event'>
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+</view>
+<view class='right-content bg-white'>
+  <block wx:if="{{data_content.length > 0}}">
+    <block wx:for="{{data_content}}" wx:key="keys" wx:for-item="v">
+      <view class="content-items" data-value="{{v.id}}" bindtap="category_event">
+        <image wx:if="{{(v.icon || null) != null}}" src="{{v.icon}}" mode="aspectFit" class="icon" />
+        <view class="text single-text">{{v.name}}</view>
+      </view>
+    </block>
+  </block>
+</view>
+
+<view wx:if="{{data_list.length == 0 && data_list_loding_status != 0}}">
+  <import src="/pages/common/nodata.wxml" />
+  <template is="nodata" data="{{status: data_list_loding_status}}">
+  </template>
+</view>

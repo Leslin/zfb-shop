@@ -1,0 +1,27 @@
+/**
+ * logo
+ */
+ul.home_site_logo-images-view li,
+ul.home_site_logo_wap-images-view li {
+    width: 220px;
+    height: 60px;
+}
+
+/**
+ * 用户注册背景图
+ */
+ul.home_site_user_register_bg_images-images-view li {
+    width: 300px;
+    height: 180px;
+}
+
+/**
+ * 带面板
+ */
+.content-right .am-panel .am-panel-bd .am-form-group {
+    margin-bottom: 10px;
+}
+.content-right .am-panel .am-panel-bd .am-form-group {
+    border-bottom: 0;
+    margin-bottom: 0;
+}

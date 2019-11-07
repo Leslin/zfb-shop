@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="{{:config('shopxo.default_charset', 'utf-8')}}" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1" />
+	<title>后台管理系统</title>
+	<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/common/lib/assets/css/amazeui.css" />
+	<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/common/lib/amazeui-switch/amazeui.switch.css" />
+	<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/common/lib/amazeui-chosen/amazeui.chosen.css" />
+	<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/common/lib/amazeui-tagsinput/amazeui.tagsinput.css" />
+	<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/common/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/admin/{{$default_theme}}/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/admin/{{$default_theme}}/css/iconfontmenu.css" />
+    {{if !empty($plugins_css)}}
+        <link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/{{$plugins_css}}" />
+    {{/if}}
+	{{if !empty($module_css)}}
+		<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/{{$module_css}}" />
+	{{/if}}
+
+	<!-- css钩子 -->
+    {{if !empty($plugins_admin_css_data) and is_array($plugins_admin_css_data)}}
+        {{foreach $plugins_admin_css_data as $hook}}
+            {{if is_string($hook)}}
+                <link rel="stylesheet" type="text/css" href="{{$hook}}?v={{:MyC('home_static_cache_version')}}" />
+            {{elseif is_array($hook) /}}
+                {{foreach $hook as $hook_css}}
+                    {{if is_string($hook_css)}}
+                        <link rel="stylesheet" type="text/css" href="{{$hook_css}}?v={{:MyC('home_static_cache_version')}}" />
+                    {{/if}}
+                {{/foreach}}
+            {{/if}}
+        {{/foreach}}
+    {{/if}}
+
+    <!-- 公共header内钩子 -->
+	{{if !empty($plugins_admin_common_header_data) and is_array($plugins_admin_common_header_data)}}
+		{{foreach $plugins_admin_common_header_data as $hook}}
+			{{if is_string($hook) or is_int($hook)}}
+				{{$hook|raw}}
+			{{/if}}
+		{{/foreach}}
+	{{/if}}
+</head>
+<script type="text/javascript">
+	var __attachment_host__ = '{{$attachment_host}}';
+</script>
+<body>
+<!-- 公共顶部钩子 -->
+{{if !empty($plugins_admin_view_common_top_data) and is_array($plugins_admin_view_common_top_data) and (!isset($is_header) or $is_header eq 1)}}
+	{{foreach $plugins_admin_view_common_top_data as $hook}}
+		{{if is_string($hook) or is_int($hook)}}
+			{{$hook|raw}}
+		{{/if}}
+	{{/foreach}}
+{{/if}}

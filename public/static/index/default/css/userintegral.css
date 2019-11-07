@@ -1,0 +1,20 @@
+/**
+ * 积分
+ */
+.user-content-body .available .panel-value {
+    color: #4CAF50;
+}
+.user-content-body .locking .panel-value {
+    color: #FF9800;
+}
+.user-content-body .panel-value {
+    font-size: 18px;
+    font-weight: 700;
+}
+.user-content-body .panel-tips {
+    color: #ff9600;
+    background: #fdf8ed;
+    padding: 3px 6px;
+    border: 1px solid #f4eadb;
+    margin-left: 10px;
+}

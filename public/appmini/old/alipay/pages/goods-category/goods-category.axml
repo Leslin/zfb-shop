@@ -1,0 +1,23 @@
+<view class='left-nav'>
+  <block a:for="{{data_list}}">
+    <view class='items {{item.active || ""}}' data-index="{{index}}" onTap='nav_event'>
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+</view>
+<view class='right-content bg-white'>
+  <block a:if="{{data_content.length > 0}}">
+    <block a:for="{{data_content}}" a:for-item="v">
+      <view class="content-items" data-value="{{v.id}}" onTap="category_event">
+        <image a:if="{{(v.icon || null) != null}}" src="{{v.icon}}" mode="aspectFit" class="icon" />
+        <view class="text single-text">{{v.name}}</view>
+      </view>
+    </block>
+  </block>
+</view>
+
+<view a:if="{{data_list.length == 0 && data_list_loding_status != 0}}">
+  <import src="/pages/common/nodata.axml" />
+  <template is="nodata" data="{{status: data_list_loding_status}}">
+  </template>
+</view>

@@ -1,0 +1,280 @@
+{{include file="public/header" /}}
+
+<!-- right content start  -->
+<div class="content-right">
+	<div class="content">
+		<!-- 基础统计 -->
+		<div class="echarts-container shopxo-base">
+			<div class="echarts-title">
+				<span class="icon"></span>
+				<span class="title">商城统计</span>
+			</div>
+			<ul class="am-avg-sm-2 am-avg-lg-4">
+				<li>
+					<div class="li-content">
+						<p class="name">用户总量</p>
+						<p class="total animation-count-to" data-to="{{$user.total_count}}" data-speed="1500">0</p>
+						<div class="yesterday">
+							<span>昨日</span>
+							<span class="animation-count-to" data-to="{{$user.yesterday_count}}" data-speed="1500">0</span>
+						</div>
+						<div class="today">
+							<span>今日</span>
+							<span class="animation-count-to" data-to="{{$user.today_count}}" data-speed="1500">0</span>
+						</div>
+						<i class="am-icon-user am-icon-lg bg-icon"></i>
+					</div>
+				</li>
+				<li>
+					<div class="li-content">
+						<p class="name">订单总量</p>
+						<p class="total animation-count-to" data-to="{{$order_number.total_count}}" data-speed="1500">0</p>
+						<div class="yesterday">
+							<span>昨日</span>
+							<span class="animation-count-to" data-to="{{$order_number.yesterday_count}}" data-speed="1500">0</span>
+						</div>
+						<div class="today">
+							<span>今日</span>
+							<span class="animation-count-to" data-to="{{$order_number.today_count}}" data-speed="1500">0</span>
+						</div>
+						<i class="am-icon-list-alt am-icon-lg bg-icon"></i>
+					</div>
+				</li>
+				<li>
+					<div class="li-content">
+						<p class="name">成交总量</p>
+						<p class="total animation-count-to" data-to="{{$order_complete_number.total_count}}" data-speed="1500">0</p>
+						<div class="yesterday">
+							<span>昨日</span>
+							<span class="animation-count-to" data-to="{{$order_complete_number.yesterday_count}}" data-speed="1500">0</span>
+						</div>
+						<div class="today">
+							<span>今日</span>
+							<span class="animation-count-to" data-to="{{$order_complete_number.today_count}}" data-speed="1500">0</span>
+						</div>
+						<i class="am-icon-gg am-icon-lg bg-icon"></i>
+					</div>
+				</li>
+				<li>
+					<div class="li-content">
+						<p class="name">收入总计</p>
+						<p class="total animation-count-to" data-to="{{$order_complete_money.total_count}}" data-speed="1500" data-decimals="2">0.00</p>
+						<div class="yesterday">
+							<span>昨日</span>
+							<span class="animation-count-to" data-to="{{$order_complete_money.yesterday_count}}" data-speed="1500" data-decimals="2">0.00</span>
+						</div>
+						<div class="today">
+							<span>今日</span>
+							<span class="animation-count-to" data-to="{{$order_complete_money.today_count}}" data-speed="1500" data-decimals="2">0.00</span>
+						</div>
+						<i class="am-icon-gift am-icon-lg bg-icon"></i>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+		<!-- 近30日订单交易走势 -->
+		<div class="echarts-container">
+			<div class="echarts-title">
+				<span class="icon"></span>
+				<span class="title">近30日订单交易走势</span>
+			</div>
+			<div id="echarts-order-trading"></div>
+		</div>
+
+		<!-- 组合 -->
+		<ul class="am-avg-sm-1 am-avg-sm-2 am-avg-lg-2 echarts-combination-container-2">
+			<li>
+				<!-- 近30日热销商品 -->
+				<div class="echarts-title">
+					<span class="icon"></span>
+					<span class="title">近30日热销商品</span>
+				</div>
+				<div id="echarts-goods-hot"></div>
+			</li>
+
+			<li>
+				<!-- 近30日订单支付方式 -->
+				<div class="echarts-title">
+					<span class="icon"></span>
+					<span class="title">近30日订单支付方式</span>
+				</div>
+				<div id="echarts-order-pay-type"></div>
+			</li>
+		</ul>
+
+		<!-- 系统信息 -->
+		<ul class="am-avg-sm-1 am-avg-sm-2 am-avg-lg-2 echarts-combination-container-2">
+			<li>
+				<div class="echarts-title">
+					<span class="icon"></span>
+					<span class="title">系统信息</span>
+				</div>
+				<dl class="dl-content">
+
+					<dt>操作系统</dt>
+					<dd>{{$data.os_ver}}</dd>
+
+					<dt>版本</dt>
+					<dd>{{$data.php_ver}}</dd>
+
+					<dt>MySQL版本</dt>
+					<dd>{{$data.mysql_ver}}</dd>
+
+					<dt>服务器端信息</dt>
+					<dd>{{$data.server_ver}}</dd>
+
+					<dt>当前域名</dt>
+					<dd>{{$data.host}}</dd>
+				</dl>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- right content end  -->
+
+<!-- footer start -->
+{{include file="public/footer" /}}
+<!-- footer end -->
+
+<script type="text/javascript">
+$(function()
+{
+	// 近30日订单交易走势
+    var order_trading_chart = echarts.init(document.getElementById('echarts-order-trading'), 'macarons');
+    var option = {
+	    tooltip : {
+	        trigger: 'axis',
+	        axisPointer: {
+	            type: 'cross',
+	            label: {
+	                backgroundColor: '#6a7985'
+	            }
+	        }
+	    },
+	    legend: {
+	        data: {{:json_encode($order_trading_trend.title_arr)}}
+	    },
+	    toolbox: {
+	        show : {{if IsMobile()}}false{{else}}true{{/if}},
+	        feature : {
+	            mark : {show: true},
+	            dataView : {show: true, readOnly: false},
+	            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+	            restore : {show: true},
+	            saveAsImage : {name:'近30日订单交易走势', show: true}
+	        }
+	    },
+	    grid: {
+	        left: '3%',
+	        right: '4%',
+	        bottom: '3%',
+	        containLabel: true
+	    },
+	    xAxis : [
+	        {
+	            type : 'category',
+	            boundaryGap : false,
+	            data : {{:json_encode($order_trading_trend.name_arr)}}
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value'
+	        }
+	    ],
+	    series : {{:json_encode($order_trading_trend.data)}}
+	};
+	order_trading_chart.setOption(option);
+
+
+    // 近30日热销商品
+    var goods_hot_chart = echarts.init(document.getElementById('echarts-goods-hot'), 'macarons');
+    var option = {
+    	title : {
+	        subtext: '仅显示前10条商品',
+	        x:'center'
+	    },
+	    tooltip : {
+	        trigger: 'item',
+	        formatter: "{b} : {c} ({d}%)"
+	    },
+	    toolbox: {
+	        show : {{if IsMobile()}}false{{else}}true{{/if}},
+	        feature : {
+	            mark : {show: true},
+	            dataView : {show: true, readOnly: false},
+	            magicType : {
+	                show: true, 
+	                type: ['pie', 'funnel'],
+	                option: {
+	                    funnel: {
+	                        x: '25%',
+	                        width: '50%',
+	                        funnelAlign: 'left',
+	                        max: 1548
+	                    }
+	                }
+	            },
+	            restore : {show: false},
+	            saveAsImage : {name:'近30日热销商品', show: true}
+	        }
+	    },
+	    calculable : true,
+	    series : [
+	        {
+	            type:'pie',
+	            radius : '55%',
+	            center: ['50%', '60%'],
+	            data: {{:json_encode($goods_hot_sale.data)}}
+	        }
+	    ]
+	};
+    goods_hot_chart.setOption(option);
+
+    // 近30日订单支付方式
+    var order_pay_type_chart = echarts.init(document.getElementById('echarts-order-pay-type'), 'macarons');
+    var option = {
+	    tooltip : {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        data: {{:json_encode($order_type_number.title_arr)}}
+	    },
+	    toolbox: {
+	        show : {{if IsMobile()}}false{{else}}true{{/if}},
+	        feature : {
+	            mark : {show: true},
+	            dataView : {show: true, readOnly: false},
+	            magicType : {show: true, type: ['line', 'bar']},
+	            restore : {show: false},
+	            saveAsImage : {name:'近30日订单支付方式', show: true}
+	        }
+	    },
+	    calculable : true,
+	    xAxis : [
+	        {
+	            type : 'category',
+	            boundaryGap : false,
+	            data : {{:json_encode($order_type_number.name_arr)}}
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value'
+	        }
+	    ],
+	    series : {{:json_encode($order_type_number.data)}}
+	};
+    order_pay_type_chart.setOption(option);
+
+	// 浏览器大小改变则实时更新图表大小
+	window.onresize = function ()
+	{
+	    order_pay_type_chart.resize();
+	    goods_hot_chart.resize();
+	    order_trading_chart.resize();
+	};
+});
+</script>

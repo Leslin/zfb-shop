@@ -1,0 +1,49 @@
+{{include file="public/header" /}}
+
+<!-- content start -->
+<div class="account-pages">
+	<div class="wrapper-page">
+		<div class="text-center">
+            <span class="logo fw-70">租赁管理系统</span>
+        </div>
+        <div class="m-t-40 card-box admin-login">
+            <div class="panel-body">
+            	<form class="am-form form-validation" action="{{:MyUrl('admin/admin/login')}}" method="POST" request-type="ajax-url" request-value="{{:MyUrl('admin/index/index')}}">
+            		<div class="am-g">
+            			<div class="am-form-group am-form-group-refreshing">
+					      <input type="text" placeholder="用户名" name="username" pattern="{{:lang('common_regex_username')}}" data-validation-message="用户名格式 5~18 个字符（可以是字母数字下划线）" class="am-radius" required />
+					    </div>
+					    <div class="am-form-group am-form-group-refreshing form-horizontal m-t-20">
+					      <input type="password" placeholder="登录密码" name="login_pwd" pattern="{{:lang('common_regex_pwd')}}" data-validation-message="密码格式 6~18 个字符" class="am-radius" required />
+					    </div>
+                        <div class="am-form-group am-form-group-refreshing">
+                        	<button type="submit" class="am-btn am-btn-primary am-radius btn-loading-example am-btn-sm am-btn-block" data-am-loading="{loadingText:'登录中...'}">登录</button>
+                        </div>
+                        
+                        <div class="am-form-group am-form-group-refreshing">
+                        	<a href="javascript:;" class="text-muted" data-am-popover="{theme: 'danger sm', content: '请联系管理员重置密码', trigger: 'hover focus'}">忘记密码?</a>
+                        </div>
+            		</div>
+            	</form>
+            </div>
+        </div>
+	</div>
+</div>
+<!-- content end -->
+
+<!-- 插件扩展数据 start -->
+{{if isset($shopxo_is_develop) and $shopxo_is_develop eq true}}
+    <div class="plugins-tag">
+        <span>plugins_view_admin_login_info</span>
+    </div>
+{{/if}}
+{{if !empty($plugins_view_admin_login_info_data) and is_array($plugins_view_admin_login_info_data)}}
+    {{foreach $plugins_view_admin_login_info_data as $hook}}
+        {{if is_string($hook) or is_int($hook)}}
+            {{$hook|raw}}
+        {{/if}}
+    {{/foreach}}
+{{/if}}
+		
+<!-- footer -->
+{{include file="public/footer" /}}
