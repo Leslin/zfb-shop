@@ -1,31 +1,14 @@
-# ShopXO 国内领先企业级B2C免费开源电商系统！
+# 基于shopXo而二次开发，主要用于支付宝小程序租赁，芝麻信用分免押金。
 * 求实进取、创新专注、自主研发、国内领先企业级B2C电商系统解决方案。
 * 遵循Apache2开源协议发布，无需授权、可商用、可二次开发、满足99%的电商运营需求。
 * PC+H5、支付宝小程序、微信小程序、百度小程序。
 
 ### 传送门
 * 官网地址：https://shopxo.net/
-* 社区交流：https://ask.shopxo.net/
-* 应用商店：https://store.shopxo.net/
-* 演示地址：https://demo.shopxo.net/ （管理账户/密码可进入官网查看）
-* 支付宝小程序：https://shopxo.net/alipay.html （已发布）
-* 微信小程序：https://shopxo.net/weixin.html （已发布）
-* 百度小程序：https://shopxo.net/baidu.html （已发布）
-
-### 小程序体验码
-![小程序二维码](https://images.gitee.com/uploads/images/2019/0819/102917_600e6efc_488475.jpeg "shopxo-qrcode.jpg")
 
 ### 安装教程
 * 安装教程：https://ask.shopxo.net/article/5
 
-### 官方QQ群（答案：shopxo.net）
-* 官方1群：833531593
-* 官方2群：641730223
-
-### 源代码平台
-* Github：https://github.com/gongfuxiang/shopxo
-* 码云/开源中国：https://gitee.com/gongfuxiang/shopxo
-* 腾讯云开发者：https://dev.tencent.com/u/gongfuxiang/p/shopxo/git
 
 ### 扩展性
 * 独立模块式开发，完善的注释，易扩展，应用管理。
@@ -55,6 +38,7 @@ ThinkPHP是一个快速、简单的基于MVC和面向对象的轻量级PHP开发
 
 # 后台管理图片展示
 ![后台管理](https://images.gitee.com/uploads/images/2019/0227/092528_9eb4dbef_488475.gif "admin-2.gif")
+
 
 # 商城基础功能简介
 ### 后端功能列表
@@ -178,17 +162,3 @@ ThinkPHP是一个快速、简单的基于MVC和面向对象的轻量级PHP开发
     > 问答/留言
     > 安全退出
 ```
-
-# 如何贡献
-非常欢迎您对ShopXO的开发作出贡献！
-你可以选择以下方式向ShopXO贡献：
-- [Github - 发布issue进行问题反馈和建议](https://github.com/gongfuxiang/shopxo/pulls)
-- [码云/开源中国 - 发布issue进行问题反馈和建议](https://gitee.com/gongfuxiang/shopxo/pulls)
-- 通过Pull Request提交修复
-- 完善我们的文档和例子
-
-# 开源协议
-Apache License Version 2.0 see http://www.apache.org/licenses/LICENSE-2.0.html
-
-# 更新日志
-更多细节参阅 <a href="changelog.txt">changelog.txt</a>
